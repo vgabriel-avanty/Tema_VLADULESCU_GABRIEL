@@ -1,0 +1,38 @@
+﻿@page
+@model Tema_VLADULESCU_GABRIEL.Pages.Cinemas.IndexModel
+
+@{
+    ViewData["Title"] = "Lista Cinema-uri";
+}
+
+<h1>Listă Cinema-uri</h1>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-primary" asp-page="Create">Adaugă Cinema</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cinema[0].Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Cinema) {
+        <tr>
+            <td style="vertical-align: baseline;">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="display: flex;justify-content:end;">
+                <div>
+                   <a asp-page="./Edit" class="btn btn-primary" asp-route-id="@item.ID">Edit</a>
+                   <a asp-page="./Delete" class="btn btn-danger" asp-route-id="@item.ID">Delete</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

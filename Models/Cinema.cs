@@ -7,12 +7,7 @@ namespace Tema_VLADULESCU_GABRIEL.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage = "Numele Cinema-ului este necesar")]
+        [Display(Name = "Nume Cinema")]
         public string? Name { get; set; }
-
-        [Required(ErrorMessage = "Locația Cinema-ului este necesară")]
-        public int CinemaLocationID { get; set; }
-        public CinemaLocation CinemaLocation { get; set; }
-
-        public ICollection<Ticket>? Tickets { get; set; }
     }
 }
