@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Cinemas\" />
+    <Folder Include="Pages\CinemaLocations\" />
+    <Folder Include="Pages\MovieGenres\" />
+    <Folder Include="Pages\Movies\" />
+    <Folder Include="Pages\Tickets\" />
+  </ItemGroup>
+
 </Project>
