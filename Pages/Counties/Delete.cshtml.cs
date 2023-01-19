@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
-namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
+namespace Tema_VLADULESCU_GABRIEL.Pages.Counties
 {
     public class DeleteModel : PageModel
     {
@@ -20,40 +20,40 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
         }
 
         [BindProperty]
-      public CinemaLocation CinemaLocation { get; set; }
+      public County County { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.CinemaLocation == null)
+            if (id == null || _context.County == null)
             {
                 return NotFound();
             }
 
-            var cinemalocation = await _context.CinemaLocation.FirstOrDefaultAsync(m => m.ID == id);
+            var county = await _context.County.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (cinemalocation == null)
+            if (county == null)
             {
                 return NotFound();
             }
             else 
             {
-                CinemaLocation = cinemalocation;
+                County = county;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.CinemaLocation == null)
+            if (id == null || _context.County == null)
             {
                 return NotFound();
             }
-            var cinemalocation = await _context.CinemaLocation.FindAsync(id);
+            var county = await _context.County.FindAsync(id);
 
-            if (cinemalocation != null)
+            if (county != null)
             {
-                CinemaLocation = cinemalocation;
-                _context.CinemaLocation.Remove(CinemaLocation);
+                County = county;
+                _context.County.Remove(County);
                 await _context.SaveChangesAsync();
             }
 

@@ -11,7 +11,7 @@ namespace Tema_VLADULESCU_GABRIEL.Models
 
         [Required(ErrorMessage = "Locația Cinema-ului este necesară")]
         public int CinemaLocationID { get; set; }
-        public CinemaLocation CinemaLocation { get; set; }
+        public County County { get; set; }
 
         public ICollection<Ticket>? Tickets { get; set; }
     }

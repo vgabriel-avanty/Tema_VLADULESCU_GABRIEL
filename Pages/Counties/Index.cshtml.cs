@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
-namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
+namespace Tema_VLADULESCU_GABRIEL.Pages.Counties
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,13 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
             _context = context;
         }
 
-        public IList<CinemaLocation> CinemaLocation { get;set; } = default!;
+        public IList<County> County { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.CinemaLocation != null)
+            if (_context.County != null)
             {
-                CinemaLocation = await _context.CinemaLocation.ToListAsync();
+                County = await _context.County.ToListAsync();
             }
         }
     }

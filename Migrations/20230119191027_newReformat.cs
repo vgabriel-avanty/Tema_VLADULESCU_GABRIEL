@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TemaVLADULESCUGABRIEL.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class newReformat : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "CinemaLocation",
+                name: "County",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CinemaLocation", x => x.ID);
+                    table.PrimaryKey("PK_County", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,15 +44,16 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CinemaLocationID = table.Column<int>(type: "int", nullable: false)
+                    CinemaLocationID = table.Column<int>(type: "int", nullable: false),
+                    CountyID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cinema", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Cinema_CinemaLocation_CinemaLocationID",
-                        column: x => x.CinemaLocationID,
-                        principalTable: "CinemaLocation",
+                        name: "FK_Cinema_County_CountyID",
+                        column: x => x.CountyID,
+                        principalTable: "County",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -109,9 +110,9 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cinema_CinemaLocationID",
+                name: "IX_Cinema_CountyID",
                 table: "Cinema",
-                column: "CinemaLocationID");
+                column: "CountyID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Movie_MovieGenreID",
@@ -142,7 +143,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                 name: "Movie");
 
             migrationBuilder.DropTable(
-                name: "CinemaLocation");
+                name: "County");
 
             migrationBuilder.DropTable(
                 name: "MovieGenre");

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
-namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
+namespace Tema_VLADULESCU_GABRIEL.Pages.Counties
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
         }
 
         [BindProperty]
-        public CinemaLocation CinemaLocation { get; set; }
+        public County County { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -36,7 +36,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
                 return Page();
             }
 
-            _context.CinemaLocation.Add(CinemaLocation);
+            _context.County.Add(County);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

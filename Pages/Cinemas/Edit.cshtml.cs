@@ -36,7 +36,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
                 return NotFound();
             }
             Cinema = cinema;
-           ViewData["CinemaLocationID"] = new SelectList(_context.CinemaLocation, "ID", "Name");
+           ViewData["CountyID"] = new SelectList(_context.County, "ID", "Name");
             return Page();
         }
 

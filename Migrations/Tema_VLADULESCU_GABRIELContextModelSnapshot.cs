@@ -33,18 +33,21 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     b.Property<int>("CinemaLocationID")
                         .HasColumnType("int");
 
+                    b.Property<int>("CountyID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CinemaLocationID");
+                    b.HasIndex("CountyID");
 
                     b.ToTable("Cinema");
                 });
 
-            modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.CinemaLocation", b =>
+            modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.County", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -58,7 +61,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("CinemaLocation");
+                    b.ToTable("County");
                 });
 
             modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.Movie", b =>
@@ -144,13 +147,13 @@ namespace TemaVLADULESCUGABRIEL.Migrations
 
             modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.Cinema", b =>
                 {
-                    b.HasOne("Tema_VLADULESCU_GABRIEL.Models.CinemaLocation", "CinemaLocation")
+                    b.HasOne("Tema_VLADULESCU_GABRIEL.Models.County", "County")
                         .WithMany("Cinemas")
-                        .HasForeignKey("CinemaLocationID")
+                        .HasForeignKey("CountyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CinemaLocation");
+                    b.Navigation("County");
                 });
 
             modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.Movie", b =>
@@ -188,7 +191,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     b.Navigation("Tickets");
                 });
 
-            modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.CinemaLocation", b =>
+            modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.County", b =>
                 {
                     b.Navigation("Cinemas");
                 });

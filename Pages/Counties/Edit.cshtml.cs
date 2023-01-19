@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
-namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
+namespace Tema_VLADULESCU_GABRIEL.Pages.Counties
 {
     public class EditModel : PageModel
     {
@@ -21,21 +21,21 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
         }
 
         [BindProperty]
-        public CinemaLocation CinemaLocation { get; set; } = default!;
+        public County County { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.CinemaLocation == null)
+            if (id == null || _context.County == null)
             {
                 return NotFound();
             }
 
-            var cinemalocation =  await _context.CinemaLocation.FirstOrDefaultAsync(m => m.ID == id);
-            if (cinemalocation == null)
+            var county =  await _context.County.FirstOrDefaultAsync(m => m.ID == id);
+            if (county == null)
             {
                 return NotFound();
             }
-            CinemaLocation = cinemalocation;
+            County = county;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
                 return Page();
             }
 
-            _context.Attach(CinemaLocation).State = EntityState.Modified;
+            _context.Attach(County).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CinemaLocationExists(CinemaLocation.ID))
+                if (!CountyExists(County.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
             return RedirectToPage("./Index");
         }
 
-        private bool CinemaLocationExists(int id)
+        private bool CountyExists(int id)
         {
-          return _context.CinemaLocation.Any(e => e.ID == id);
+          return _context.County.Any(e => e.ID == id);
         }
     }
 }

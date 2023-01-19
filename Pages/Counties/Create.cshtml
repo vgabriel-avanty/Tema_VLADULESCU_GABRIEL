@@ -1,21 +1,21 @@
 ﻿@page
-@model Tema_VLADULESCU_GABRIEL.Pages.MovieGenres.CreateModel
+@model Tema_VLADULESCU_GABRIEL.Pages.Counties.CreateModel
 
 @{
-    ViewData["Title"] = "Adaugă Gen Film";
+    ViewData["Title"] = "Adaugă Județ";
 }
 
 <a asp-page="Index" class="btn btn-primary">Înapoi</a>
-<h1 class="d-flex justify-content-center mt-5">Adaugă Gen</h1>
+<h1 class="d-flex justify-content-center mt-5">Adaugă Județ</h1>
 
 <div class="row">
     <div class="col-md-4 m-auto">
         <form method="post" class="shadow p-5">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MovieGenre.Name" class="control-label"></label>
-                <input asp-for="MovieGenre.Name" class="form-control" />
-                <span asp-validation-for="MovieGenre.Name" class="text-danger"></span>
+                <label asp-for="County.Name" class="control-label"></label>
+                <input asp-for="County.Name" class="form-control" />
+                <span asp-validation-for="County.Name" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">
                 <input type="submit" value="Adaugă" class="btn btn-primary w-100" />

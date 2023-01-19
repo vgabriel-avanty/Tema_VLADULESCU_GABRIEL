@@ -14,7 +14,7 @@ namespace Tema_VLADULESCU_GABRIEL.Data
         {
         }
 
-        public DbSet<Tema_VLADULESCU_GABRIEL.Models.CinemaLocation> CinemaLocation { get; set; } = default!;
+        public DbSet<Tema_VLADULESCU_GABRIEL.Models.County> County { get; set; } = default!;
 
         public DbSet<Tema_VLADULESCU_GABRIEL.Models.Cinema> Cinema { get; set; }
 

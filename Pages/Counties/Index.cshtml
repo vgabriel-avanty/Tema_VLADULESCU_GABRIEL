@@ -1,27 +1,27 @@
 ﻿@page
-@model Tema_VLADULESCU_GABRIEL.Pages.MovieGenres.IndexModel
+@model Tema_VLADULESCU_GABRIEL.Pages.Counties.IndexModel
 
 @{
-    ViewData["Title"] = "Genuri Filme";
+    ViewData["Title"] = "Listă Județe";
 }
 
-<h1>Listă Genuri Filme</h1>
+<h1>Listă Județe</h1>
 
 <div class="d-flex justify-content-end">
-    <a class="btn btn-primary" asp-page="Create">Adaugă Gen Film</a>
+  <a class="btn btn-primary" asp-page="Create">Adaugă Județ</a>
 </div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MovieGenre[0].Name)
+                @Html.DisplayNameFor(model => model.County[0].Name)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.MovieGenre) {
+@foreach (var item in Model.County) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

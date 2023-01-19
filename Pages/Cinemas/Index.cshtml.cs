@@ -26,7 +26,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
             if (_context.Cinema != null)
             {
                 Cinema = await _context.Cinema
-                .Include(c => c.CinemaLocation).ToListAsync();
+                .Include(c => c.County).ToListAsync();
             }
         }
     }
