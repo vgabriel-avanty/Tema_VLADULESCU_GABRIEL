@@ -38,6 +38,28 @@
     </div>
 </div>
 
+<script runat="server">
+ void Page_Load()
+ {
+ if (Page.IsPostBack)
+ {
+ Label1.Text = "Your rating: " + r1.CurrentRating;
+ }
+ }
+</script>
+
+<asp:Label ID="Label1" runat="server" />
+<input type="submit" id="Submit1" runat="server" value="Rate!" />
+
+<ajaxToolkit:Rating ID="r1" runat="server"
+ CurrentRating="0" MaxRating="5"
+ EmptyStarCssClass="emptypng" FilledStarCssClass="smileypng"
+ StarCssClass="smileypng" WaitingStarCssClass="donesmileypng"/>
+
+<style type="text/css">
+
+</style>
+
 <div>
     <a asp-page="Index">Back to List</a>
 </div>

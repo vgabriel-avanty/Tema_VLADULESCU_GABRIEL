@@ -17,10 +17,6 @@ namespace Tema_VLADULESCU_GABRIEL.Models
         public int MovieGenreID { get; set; }
         public MovieGenre MovieGenre { get; set; }
 
-        [Range(20, 100, ErrorMessage = "Prețul trebuie să fie intre 20-100 Lei")]
-        [DisplayFormat(DataFormatString = "{0:c}")]
-        public decimal Price { get; set; }
-
         [Required(ErrorMessage = "Rating-ul filmului este necesar")]
         [StringLength(5)]
         public string Rating { get; set; }

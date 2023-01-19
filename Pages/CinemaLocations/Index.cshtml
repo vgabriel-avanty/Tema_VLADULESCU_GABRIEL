@@ -1,5 +1,5 @@
 ﻿@page
-@model Tema_VLADULESCU_GABRIEL.Pages.Movies.IndexModel
+@model Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,34 +14,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Title)
+                @Html.DisplayNameFor(model => model.CinemaLocation[0].Location)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].ReleaseDate)
+                @Html.DisplayNameFor(model => model.CinemaLocation[0].Cinema)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movie[0].MovieGenre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie[0].Rating)
+                @Html.DisplayNameFor(model => model.CinemaLocation[0].County)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Movie) {
+@foreach (var item in Model.CinemaLocation) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
+                @Html.DisplayFor(modelItem => item.Cinema.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MovieGenre.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
+                @Html.DisplayFor(modelItem => item.County.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

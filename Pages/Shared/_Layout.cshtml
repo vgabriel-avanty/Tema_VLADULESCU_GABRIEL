@@ -25,13 +25,16 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Movies/Index">Lista Filme</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Cinemas/Index">Lista Cinema-uri</a></li>
                                 <li><a class="dropdown-item" asp-area="" asp-page="/Tickets/Index">Lista Rezervari</a></li>
                                 <li><hr class="dropdown-divider"></li>
+                                <li><h6 class="dropdown-header">Asociere principală</h6></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/CinemaLocations/Index">Asociere Locatie->Cinema+Județ</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Movies/Index">Asociere Film->Gen</a></li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li><h6 class="dropdown-header">Opțiuni pentru Formulare</h6></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Counties/Index">Județe</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/MovieGenres/Index">Genuri Filme</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Cinemas/Index">Listă Cinema-uri</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Counties/Index"> Listă Județe</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/MovieGenres/Index">Listă Genuri Filme</a></li>
                             </ul>
                         </li>
                     </ul>

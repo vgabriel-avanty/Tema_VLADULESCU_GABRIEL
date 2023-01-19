@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
-namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
+namespace Tema_VLADULESCU_GABRIEL.Pages.CinemaLocations
 {
     public class EditModel : PageModel
     {
@@ -21,21 +21,23 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
         }
 
         [BindProperty]
-        public Cinema Cinema { get; set; } = default!;
+        public CinemaLocation CinemaLocation { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Cinema == null)
+            if (id == null || _context.CinemaLocation == null)
             {
                 return NotFound();
             }
 
-            var cinema =  await _context.Cinema.FirstOrDefaultAsync(m => m.ID == id);
-            if (cinema == null)
+            var cinemalocation =  await _context.CinemaLocation.FirstOrDefaultAsync(m => m.ID == id);
+            if (cinemalocation == null)
             {
                 return NotFound();
             }
-            Cinema = cinema;
+            CinemaLocation = cinemalocation;
+           ViewData["CinemaID"] = new SelectList(_context.Cinema, "ID", "Name");
+           ViewData["CountyID"] = new SelectList(_context.County, "ID", "Name");
             return Page();
         }
 
@@ -48,7 +50,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
                 return Page();
             }
 
-            _context.Attach(Cinema).State = EntityState.Modified;
+            _context.Attach(CinemaLocation).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +58,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CinemaExists(Cinema.ID))
+                if (!CinemaLocationExists(CinemaLocation.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +71,9 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Cinemas
             return RedirectToPage("./Index");
         }
 
-        private bool CinemaExists(int id)
+        private bool CinemaLocationExists(int id)
         {
-          return _context.Cinema.Any(e => e.ID == id);
+          return _context.CinemaLocation.Any(e => e.ID == id);
         }
     }
 }

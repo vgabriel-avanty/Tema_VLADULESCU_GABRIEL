@@ -23,5 +23,7 @@ namespace Tema_VLADULESCU_GABRIEL.Data
         public DbSet<Tema_VLADULESCU_GABRIEL.Models.Movie> Movie { get; set; }
 
         public DbSet<Tema_VLADULESCU_GABRIEL.Models.Ticket> Ticket { get; set; }
+
+        public DbSet<Tema_VLADULESCU_GABRIEL.Models.CinemaLocation> CinemaLocation { get; set; }
     }
 }
