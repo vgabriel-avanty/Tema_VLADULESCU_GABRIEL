@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TemaVLADULESCUGABRIEL.Migrations
 {
     /// <inheritdoc />
-    public partial class Test : Migration
+    public partial class DatabaseRemake : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,7 +65,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MovieGenreID = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
+                    Rating = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,9 +113,9 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CinemaID = table.Column<int>(type: "int", nullable: false),
+                    CinemaLocationID = table.Column<int>(type: "int", nullable: false),
                     MovieID = table.Column<int>(type: "int", nullable: false),
-                    CinemaLocationID = table.Column<int>(type: "int", nullable: true)
+                    TicketDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,11 +124,6 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                         name: "FK_Ticket_CinemaLocation_CinemaLocationID",
                         column: x => x.CinemaLocationID,
                         principalTable: "CinemaLocation",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_Ticket_Cinema_CinemaID",
-                        column: x => x.CinemaID,
-                        principalTable: "Cinema",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -158,11 +153,6 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                 name: "IX_Movie_MovieGenreID",
                 table: "Movie",
                 column: "MovieGenreID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ticket_CinemaID",
-                table: "Ticket",
-                column: "CinemaID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ticket_CinemaLocationID",

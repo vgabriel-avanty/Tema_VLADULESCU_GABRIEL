@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Models;
 
@@ -25,5 +26,10 @@ namespace Tema_VLADULESCU_GABRIEL.Data
         public DbSet<Tema_VLADULESCU_GABRIEL.Models.Ticket> Ticket { get; set; }
 
         public DbSet<Tema_VLADULESCU_GABRIEL.Models.CinemaLocation> CinemaLocation { get; set; }
+
+        internal Task<ProducesResponseTypeAttribute> SaveProduct(Movie product)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

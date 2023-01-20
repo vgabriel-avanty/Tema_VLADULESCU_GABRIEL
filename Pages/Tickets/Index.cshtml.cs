@@ -26,7 +26,7 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Tickets
             if (_context.Ticket != null)
             {
                 Ticket = await _context.Ticket
-                .Include(t => t.Cinema)
+                .Include(t => t.CinemaLocation)
                 .Include(t => t.Movie).ToListAsync();
             }
         }

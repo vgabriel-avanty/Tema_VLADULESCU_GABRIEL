@@ -2,7 +2,7 @@
 @model Tema_VLADULESCU_GABRIEL.Pages.Tickets.IndexModel
 
 @{
-    ViewData["Title"] = "Rezervari Bilete";
+    ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
@@ -20,10 +20,13 @@
                 @Html.DisplayNameFor(model => model.Ticket[0].LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ticket[0].Cinema)
+                @Html.DisplayNameFor(model => model.Ticket[0].CinemaLocation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Ticket[0].Movie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].TicketDate)
             </th>
             <th></th>
         </tr>
@@ -38,10 +41,13 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cinema.Name)
+                @Html.DisplayFor(modelItem => item.CinemaLocation.Location)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Movie.Rating)
+                @Html.DisplayFor(modelItem => item.Movie.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketDate)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

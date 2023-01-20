@@ -36,8 +36,8 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Tickets
                 return NotFound();
             }
             Ticket = ticket;
-           ViewData["CinemaID"] = new SelectList(_context.Cinema, "ID", "Name");
-           ViewData["MovieID"] = new SelectList(_context.Movie, "ID", "Rating");
+           ViewData["CinemaLocationID"] = new SelectList(_context.CinemaLocation, "ID", "Location");
+           ViewData["MovieID"] = new SelectList(_context.Movie, "ID", "Title");
             return Page();
         }
 

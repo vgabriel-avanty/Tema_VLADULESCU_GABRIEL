@@ -31,7 +31,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Rating" class="control-label"></label>
-                <input asp-for="Movie.Rating" class="form-control" />
+                <div>
+                    <span class="start_rate">
+                        <i class="fa fa-star-o text-warning" id="r1" style="font-size:20pt;" aria-hidden="true"></i>
+                        <i class="fa fa-star-o text-warning" id="r2" style="font-size:20pt;" aria-hidden="true"></i>
+                        <i class="fa fa-star-o text-warning" id="r3" style="font-size:20pt;" aria-hidden="true"></i>
+                        <i class="fa fa-star-o text-warning" id="r4" style="font-size:20pt;" aria-hidden="true"></i>
+                        <i class="fa fa-star-o text-warning" id="r5" style="font-size:20pt;" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <input asp-for="Movie.Rating" type="hidden" id="movie_rating" typeof="hidden" class="form-control" />
                 <span asp-validation-for="Movie.Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -46,5 +55,73 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <script>
+
+        $(function () {
+            reformatRating();
+            function createSelector(attr, value = null) {
+                return "'" + '[' + attr + '="' + value + '"]' + "'";
+            }
+
+            function createSelectorId(value) {
+                return "'" + '#' + value + "'";
+            }
+
+            function reformatRating(ratingValue = null) {
+                if (!ratingValue)
+                    ratingValue = $("#movie_rating").val();
+
+                var startlist = $('.start_rate').children();
+
+                if (startlist && startlist.length > 0) {
+                    for (var i = 0; i < 5; i++) {
+                        startlist[i].classList.add('fa-star-o');
+                        startlist[i].classList.remove('fa-star');
+                    }
+
+                    for (var i = 0; i < ratingValue; i++) {
+                        startlist[i].classList.remove('fa-star-o');
+                        startlist[i].classList.add('fa-star');
+                    }
+                }
+
+                $("#movie_rating").val(ratingValue);
+            }
+
+            $("#r1").click(function () {
+                var item = this.attributes.id.value;
+                $("#movie_rating").val(item.substring(1));
+                reformatRating(item.substring(1));
+            });
+
+            $("#r2").click(function () {
+                var item = this.attributes.id.value;
+                $("#movie_rating").val(item.substring(1));
+                reformatRating(item.substring(1));
+            });
+
+            $("#r3").click(function () {
+                var item = this.attributes.id.value;
+                $("#movie_rating").val(item.substring(1));
+                reformatRating(item.substring(1));
+            });
+
+            $("#r4").click(function () {
+                var item = this.attributes.id.value;
+                $("#movie_rating").val(item.substring(1));
+                reformatRating(item.substring(1));
+            });
+
+            $("#r5").click(function () {
+                var item = this.attributes.id.value;
+                $("#movie_rating").val(item.substring(1));
+                reformatRating(item.substring(1));
+            });
+        })
+    </script>
 }

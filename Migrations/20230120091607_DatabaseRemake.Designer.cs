@@ -12,8 +12,8 @@ using Tema_VLADULESCU_GABRIEL.Data;
 namespace TemaVLADULESCUGABRIEL.Migrations
 {
     [DbContext(typeof(Tema_VLADULESCU_GABRIELContext))]
-    [Migration("20230119210930_Test")]
-    partial class Test
+    [Migration("20230120091607_DatabaseRemake")]
+    partial class DatabaseRemake
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,10 +102,8 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     b.Property<int>("MovieGenreID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
@@ -146,10 +144,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("CinemaID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CinemaLocationID")
+                    b.Property<int>("CinemaLocationID")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -163,9 +158,10 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                     b.Property<int>("MovieID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.Property<DateTime>("TicketDate")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("CinemaID");
+                    b.HasKey("ID");
 
                     b.HasIndex("CinemaLocationID");
 
@@ -213,15 +209,11 @@ namespace TemaVLADULESCUGABRIEL.Migrations
 
             modelBuilder.Entity("Tema_VLADULESCU_GABRIEL.Models.Ticket", b =>
                 {
-                    b.HasOne("Tema_VLADULESCU_GABRIEL.Models.Cinema", "Cinema")
-                        .WithMany()
-                        .HasForeignKey("CinemaID")
+                    b.HasOne("Tema_VLADULESCU_GABRIEL.Models.CinemaLocation", "CinemaLocation")
+                        .WithMany("Tickets")
+                        .HasForeignKey("CinemaLocationID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Tema_VLADULESCU_GABRIEL.Models.CinemaLocation", null)
-                        .WithMany("Tickets")
-                        .HasForeignKey("CinemaLocationID");
 
                     b.HasOne("Tema_VLADULESCU_GABRIEL.Models.Movie", "Movie")
                         .WithMany("Tickets")
@@ -229,7 +221,7 @@ namespace TemaVLADULESCUGABRIEL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cinema");
+                    b.Navigation("CinemaLocation");
 
                     b.Navigation("Movie");
                 });
