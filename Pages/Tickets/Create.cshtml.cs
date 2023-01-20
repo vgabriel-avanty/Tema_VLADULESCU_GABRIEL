@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Tema_VLADULESCU_GABRIEL.Data;
 using Tema_VLADULESCU_GABRIEL.Models;
 
@@ -21,8 +22,17 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Tickets
 
         public IActionResult OnGet()
         {
-        ViewData["CinemaLocationID"] = new SelectList(_context.CinemaLocation, "ID", "Location");
-        ViewData["MovieID"] = new SelectList(_context.Movie, "ID", "Title");
+            var List = _context.CinemaLocation
+            .Include(b => b.Cinema)
+            .Include(b => b.County)
+            .Select(x => new
+            {
+                x.ID,
+                SelectionName = x.Cinema.Name + " - Județ: " + x.County.Name + " Locație: " + x.Location
+            });
+
+            ViewData["CinemaLocationID"] = new SelectList(List, "ID", "SelectionName");
+            ViewData["MovieID"] = new SelectList(_context.Movie, "ID", "Title");
             return Page();
         }
 
