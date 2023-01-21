@@ -10,16 +10,17 @@ namespace Tema_VLADULESCU_GABRIEL.Models
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Data de Lansare a filmului este necesară")]
-        [DisplayFormat(DataFormatString = "{0:d}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
 
         [Required(ErrorMessage = "Genul filmului este necesar")]
         public int MovieGenreID { get; set; }
-        public MovieGenre MovieGenre { get; set; }
+        public MovieGenre? MovieGenre { get; set; }
 
         [Required(ErrorMessage = "Rating-ul filmului este necesar")]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        [Range(1, 5)]
+        public int Rating { get; set; }
 
         public ICollection<Ticket>? Tickets { get; set; }
     }

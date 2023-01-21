@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +22,13 @@ namespace Tema_VLADULESCU_GABRIEL.Pages.Movies
 
         public IActionResult OnGet()
         {
-        ViewData["MovieGenreID"] = new SelectList(_context.MovieGenre, "ID", "Name");
+            ViewData["MovieGenreID"] = new SelectList(_context.MovieGenre, "ID", "Name");
             return Page();
         }
 
         [BindProperty]
         public Movie Movie { get; set; }
         
-
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {

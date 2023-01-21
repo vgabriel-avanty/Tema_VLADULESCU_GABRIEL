@@ -24,16 +24,22 @@
             @Html.DisplayFor(model => model.Ticket.LastName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Ticket.Cinema)
+            @Html.DisplayNameFor(model => model.Ticket.CinemaLocation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ticket.Cinema.Name)
+            @Html.DisplayFor(model => model.Ticket.CinemaLocation.Location)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Ticket.Movie)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Ticket.Movie.Rating)
+            @Html.DisplayFor(model => model.Ticket.Movie.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ticket.TicketDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ticket.TicketDate)
         </dd>
     </dl>
 </div>

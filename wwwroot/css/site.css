@@ -16,3 +16,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.emptypng {
+    background-image: url(../images/empty.png);
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+}
+
+.smileypng {
+    background-image: url(../images/empty.png);
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+}
+
+.donesmileypng {
+    background-image: url(../images/empty.png);
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+}
